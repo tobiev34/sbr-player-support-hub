@@ -22,7 +22,8 @@ const actions = [
 ] as const;
 
 function Index() {
-  const [main, ...rest] = updates;
+  const main = updates[0]!;
+  const rest = updates.slice(1);
   return (
     <main className="relative mx-auto max-w-6xl px-6 pb-28">
       <section className="grid items-center gap-8 pt-16 md:grid-cols-2 md:pt-24">
