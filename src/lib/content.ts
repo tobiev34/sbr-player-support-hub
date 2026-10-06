@@ -6,7 +6,7 @@ export const team = [
   { name: "....", role: "Community Manager" },
   { name: "....", role: "Concept Artist" },
   { name: "....", role: "Gameplay Programmer" },
-  { name: "Lyra Chen", role: "Sound Designer" },
+  { name: "....", role: "Sound Designer" },
 ];
 
 export const updates = [
