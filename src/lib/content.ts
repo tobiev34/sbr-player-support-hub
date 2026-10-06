@@ -5,7 +5,7 @@ import teamDmitri from "@/assets/team-dmitri.jpg";
 
 export const team = [
   { name: "RUNITBACK", role: "OWNER", image: teamMara },
-  { name: "Kade Ortiz", role: "OWNER", image: teamKade },
+  { name: "NEXI", role: "OWNER", image: teamKade },
   { name: "Iris Kwon", role: "Community Lead", image: teamIris },
   { name: "Dmitri Ross", role: "Art Director", image: teamDmitri },
 ];
