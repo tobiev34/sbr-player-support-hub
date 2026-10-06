@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -131,13 +131,16 @@ function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-edge/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
-          <div className="grid size-9 place-items-center rounded-lg bg-gradient-to-br from-plasma to-volt font-display text-sm font-extrabold text-primary-foreground">
-            S
-          </div>
+          <img
+            src={sbrLogo.url}
+            alt="SBR Studios logo"
+            className="size-10 rounded-lg"
+          />
           <span className="font-display text-lg font-bold tracking-tight">
             SBR<span className="text-volt">.</span>studio
           </span>
         </Link>
+
         <nav className="hidden items-center gap-7 font-mono text-[11px] uppercase tracking-[0.2em] text-dim md:flex">
           <Link to="/" className="transition-colors hover:text-volt" activeProps={{ className: "text-foreground" }}>
             Home
