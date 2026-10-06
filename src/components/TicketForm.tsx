@@ -19,7 +19,7 @@ const accentText: Record<Accent, string> = {
 };
 
 const accentBtn: Record<Accent, string> = {
-  volt: "bg-gradient-to-r from-plasma to-volt",
+  volt: "bg-volt",
   plasma: "bg-plasma",
   coral: "bg-coral",
 };

@@ -29,22 +29,20 @@ function Index() {
       <section className="grid items-center gap-8 pt-16 md:grid-cols-2 md:pt-24">
         <div className="animate-rise">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-edge bg-panel/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-volt">
-            <span className="size-1.5 rounded-full bg-volt animate-glow" />
+            <span className="size-1.5 rounded-full bg-volt" />
             Season 4 · live now
           </div>
           <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-balance md:text-7xl">
             Built by players.
             <br />
-            <span className="bg-gradient-to-r from-plasma via-volt to-volt bg-clip-text text-transparent">
-              Guarded by SBR.
-            </span>
+            <span className="text-volt">Guarded by SBR.</span>
           </h1>
           <p className="mt-6 max-w-[46ch] text-pretty leading-relaxed text-dim">
             The studio behind SBR — a competitive arena where every match is watched, every report
             answered, and every ban appeal gets a human.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#actions" className="rounded-xl bg-gradient-to-r from-plasma to-volt px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_30px_-6px_var(--volt)] transition-transform hover:-translate-y-0.5">
+            <a href="#actions" className="rounded-xl bg-volt px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:brightness-110">
               Open the console
             </a>
             <Link to="/updates" className="rounded-xl border border-edge bg-panel px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-plasma/60">
