@@ -119,8 +119,9 @@ function Index() {
           <Link to="/credits" className="font-mono text-[11px] uppercase tracking-[0.15em] text-dim hover:text-volt">Full credits →</Link>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m) => (
-            <div key={m.name} className="flex items-center gap-3">
+          {team.map((m, i) => (
+            <div key={i} className="flex items-center gap-3">
+
               <div>
                 <div className="font-display text-sm font-bold tracking-tight">{m.name}</div>
                 <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-dim">{m.role}</div>
