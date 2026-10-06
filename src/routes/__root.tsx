@@ -201,10 +201,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen overflow-hidden bg-background font-body text-foreground">
-        <div className="pointer-events-none absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full bg-plasma/25 blur-[130px] animate-drift" />
-        <div className="pointer-events-none absolute top-24 right-[-120px] h-[460px] w-[460px] rounded-full bg-volt/20 blur-[140px] animate-drift-reverse" />
-        <div className="pointer-events-none absolute inset-0 bg-grid-fade" />
+      <div className="relative min-h-screen bg-background font-body text-foreground">
         <SiteHeader />
         <Outlet />
         <SiteFooter />
