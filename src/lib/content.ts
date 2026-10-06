@@ -2,12 +2,20 @@ import teamMara from "@/assets/team-mara.jpg";
 import teamKade from "@/assets/team-kade.jpg";
 import teamIris from "@/assets/team-iris.jpg";
 import teamDmitri from "@/assets/team-dmitri.jpg";
+import teamJuno from "@/assets/team-juno.jpg";
+import teamRuko from "@/assets/team-ruko.jpg";
+import teamVex from "@/assets/team-vex.jpg";
+import teamLyra from "@/assets/team-lyra.jpg";
 
 export const team = [
   { name: "RUNITBACK", role: "OWNER", image: teamMara },
   { name: "NEXI", role: "OWNER", image: teamKade },
   { name: "Iris Kwon", role: "Community Lead", image: teamIris },
   { name: "Dmitri Ross", role: "Art Director", image: teamDmitri },
+  { name: "Juno Park", role: "Community Manager", image: teamJuno },
+  { name: "Ruko Sato", role: "Concept Artist", image: teamRuko },
+  { name: "Vex Moreau", role: "Gameplay Programmer", image: teamVex },
+  { name: "Lyra Chen", role: "Sound Designer", image: teamLyra },
 ];
 
 export const updates = [
