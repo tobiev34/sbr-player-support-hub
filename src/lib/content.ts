@@ -10,8 +10,8 @@ import teamLyra from "@/assets/team-lyra.jpg";
 export const team = [
   { name: "RUNITBACK", role: "OWNER", image: teamMara },
   { name: "NEXI", role: "OWNER", image: teamKade },
-  { name: "Iris Kwon", role: "Community Lead", image: teamIris },
-  { name: "Dmitri Ross", role: "Art Director", image: teamDmitri },
+  { name: "MYSOUL", role: "COMUNITY LEADER", image: teamIris },
+  { name: "ALBERT", role: "\n", image: teamDmitri },
   { name: "Juno Park", role: "Community Manager", image: teamJuno },
   { name: "Ruko Sato", role: "Concept Artist", image: teamRuko },
   { name: "Vex Moreau", role: "Gameplay Programmer", image: teamVex },
