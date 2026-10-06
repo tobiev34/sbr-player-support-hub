@@ -121,7 +121,6 @@ function Index() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m) => (
             <div key={m.name} className="flex items-center gap-3">
-              <img src={m.image} alt={m.name} width={56} height={56} loading="lazy" className="size-14 shrink-0 rounded-xl object-cover" />
               <div>
                 <div className="font-display text-sm font-bold tracking-tight">{m.name}</div>
                 <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-dim">{m.role}</div>
