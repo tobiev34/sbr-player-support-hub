@@ -5,7 +5,7 @@ export const team = [
   { name: "ALBERT", role: "DC LEADER" },
   { name: "....", role: "Community Manager" },
   { name: "....", role: "Concept Artist" },
-  { name: "Vex Moreau", role: "Gameplay Programmer" },
+  { name: "....", role: "Gameplay Programmer" },
   { name: "Lyra Chen", role: "Sound Designer" },
 ];
 
