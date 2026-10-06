@@ -23,9 +23,8 @@ function CreditsPage() {
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {team.map((m) => (
           <div key={m.name} className="rounded-2xl border border-edge bg-panel/70 p-5 backdrop-blur-md">
-            <img src={m.image} alt={m.name} width={816} height={816} loading="lazy" className="aspect-square w-full rounded-xl object-cover" />
-            <div className="mt-4 font-display text-base font-bold tracking-tight">{m.name}</div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-volt">{m.role}</div>
+            <div className="font-display text-base font-bold tracking-tight">{m.name}</div>
+            <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-volt">{m.role}</div>
           </div>
         ))}
       </div>
