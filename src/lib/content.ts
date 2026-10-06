@@ -3,8 +3,8 @@ export const team = [
   { name: "NEXI", role: "OWNER" },
   { name: "MYSOUL", role: "COMUNITY LEADER" },
   { name: "ALBERT", role: "DC LEADER" },
-  { name: "Juno Park", role: "Community Manager" },
-  { name: "Ruko Sato", role: "Concept Artist" },
+  { name: "....", role: "Community Manager" },
+  { name: "....", role: "Concept Artist" },
   { name: "Vex Moreau", role: "Gameplay Programmer" },
   { name: "Lyra Chen", role: "Sound Designer" },
 ];
