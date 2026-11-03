@@ -23,7 +23,7 @@ function UpdatesPage() {
       <div className="mt-10 grid gap-4">
         {updates.map((u) => (
           <article key={u.version} className="rounded-2xl border border-edge bg-panel/70 p-6 backdrop-blur-md">
-            <div className="font-mono text-[11px] uppercase tracking-[0.15em] text-dim">
+            <div className="font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
               <span className="text-volt">{u.version}</span> · {u.date}
             </div>
             <h2 className="mt-2 font-display text-xl font-bold tracking-tight">{u.title}</h2>

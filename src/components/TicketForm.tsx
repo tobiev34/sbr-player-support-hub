@@ -40,7 +40,7 @@ export function PageIntro({
 }) {
   return (
     <div className="animate-rise">
-      <div className={`font-mono text-[11px] uppercase tracking-[0.2em] ${accentText[accent]}`}>
+      <div className={`font-mono text-[11px] uppercase tracking-[0.08em] ${accentText[accent]}`}>
         {eyebrow}
       </div>
       <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight text-balance md:text-5xl">
@@ -82,7 +82,7 @@ export function TicketForm({
             key={f.name}
             className={`block ${f.type === "textarea" ? "sm:col-span-2" : ""}`}
           >
-            <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.15em] text-dim">
+            <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
               {f.label}
               {f.required !== false && <span className={accentText[accent]}> *</span>}
             </span>

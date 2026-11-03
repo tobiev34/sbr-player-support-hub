@@ -25,7 +25,7 @@ function CreditsPage() {
           <div key={i} className="rounded-2xl border border-edge bg-panel/70 p-5 backdrop-blur-md">
 
             <div className="font-display text-base font-bold tracking-tight">{m.name}</div>
-            <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-volt">{m.role}</div>
+            <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.05em] text-volt">{m.role}</div>
           </div>
         ))}
       </div>
