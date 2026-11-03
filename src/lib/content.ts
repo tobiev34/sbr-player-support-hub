@@ -1,3 +1,5 @@
+import weaponBat from "@/assets/first-weapon-bat.png.asset.json";
+
 export const team = [
   { name: "RUNITBACK", role: "OWNER" },
   { name: "NEXI", role: "OWNER" },
@@ -9,7 +11,16 @@ export const team = [
   { name: "....", role: "Sound Designer" },
 ];
 
-export const updates = [
+export type Update = { version: string; date: string; title: string; body: string; image?: string };
+
+export const updates: Update[] = [
+  {
+    version: "sneak peek",
+    date: "nov 03",
+    title: "First weapon in game",
+    body: "A first look at the very first weapon coming to SBR: a spiked, burlap-wrapped bat — with a little bird riding along.",
+    image: weaponBat.url,
+  },
   {
     version: "patch 4.2",
     date: "mar 14",
