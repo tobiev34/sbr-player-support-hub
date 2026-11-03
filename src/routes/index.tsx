@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroArena from "@/assets/hero-arena.jpg";
-import ashfallMap from "@/assets/ashfall-map.jpg";
+import sbrBanner from "@/assets/sbr-logo-banner.webp.asset.json";
 import { team, updates } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
@@ -51,7 +50,7 @@ function Index() {
           </div>
         </div>
         <div className="animate-rise [animation-delay:120ms]">
-          <img src={heroArena} alt="SBR esports arena stage" width={1008} height={768} className="aspect-[4/3] w-full rounded-3xl object-cover" />
+          <img src={sbrBanner.url} alt="SBR Studios logo" width={960} height={540} className="brick aspect-[4/3] w-full rounded-lg object-cover" />
         </div>
       </section>
 
@@ -83,7 +82,7 @@ function Index() {
         <div className="grid gap-4 lg:grid-cols-3">
           <article className="overflow-hidden rounded-2xl border border-edge bg-panel brick lg:col-span-2">
             <div className="grid sm:grid-cols-2">
-              <img src={ashfallMap} alt="Ashfall map" width={912} height={736} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
+              <img src={sbrBanner.url} alt="SBR Studios logo" width={960} height={540} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
               <div className="p-6">
                 <div className="flex gap-3 font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
                   <span className="text-volt">{main.version}</span>
