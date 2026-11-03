@@ -43,36 +43,36 @@
 @theme {
   --font-display: "Sora", sans-serif;
   --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-mono: "Inter", sans-serif;
 }
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.13 0.015 220);
-  --foreground: oklch(0.94 0.01 220);
-  --card: oklch(0.16 0.018 220);
-  --card-foreground: oklch(0.94 0.01 220);
-  --popover: oklch(0.16 0.018 220);
-  --popover-foreground: oklch(0.94 0.01 220);
-  --primary: oklch(0.92 0.19 115);
-  --primary-foreground: oklch(0.13 0.015 220);
-  --secondary: oklch(0.2 0.025 220);
-  --secondary-foreground: oklch(0.94 0.01 220);
-  --muted: oklch(0.2 0.025 220);
-  --muted-foreground: oklch(0.66 0.02 220);
-  --accent: oklch(0.76 0.13 205);
-  --accent-foreground: oklch(0.13 0.015 220);
-  --destructive: oklch(0.65 0.22 15);
-  --destructive-foreground: oklch(0.97 0.01 220);
-  --border: oklch(0.27 0.02 220);
-  --input: oklch(0.27 0.02 220);
-  --ring: oklch(0.92 0.19 115);
-  --panel: oklch(0.16 0.018 220);
-  --edge: oklch(0.27 0.02 220);
-  --dim: oklch(0.66 0.02 220);
-  --volt: oklch(0.92 0.19 115);
-  --plasma: oklch(0.76 0.13 205);
-  --coral: oklch(0.68 0.2 10);
+  --background: oklch(0.16 0.006 240);
+  --foreground: oklch(0.95 0.004 240);
+  --card: oklch(0.2 0.007 240);
+  --card-foreground: oklch(0.95 0.004 240);
+  --popover: oklch(0.2 0.007 240);
+  --popover-foreground: oklch(0.95 0.004 240);
+  --primary: oklch(0.88 0.15 115);
+  --primary-foreground: oklch(0.18 0.01 240);
+  --secondary: oklch(0.24 0.008 240);
+  --secondary-foreground: oklch(0.95 0.004 240);
+  --muted: oklch(0.24 0.008 240);
+  --muted-foreground: oklch(0.7 0.01 240);
+  --accent: oklch(0.72 0.1 205);
+  --accent-foreground: oklch(0.18 0.01 240);
+  --destructive: oklch(0.62 0.17 25);
+  --destructive-foreground: oklch(0.97 0.004 240);
+  --border: oklch(0.3 0.008 240);
+  --input: oklch(0.3 0.008 240);
+  --ring: oklch(0.88 0.15 115);
+  --panel: oklch(0.2 0.007 240);
+  --edge: oklch(0.3 0.008 240);
+  --dim: oklch(0.7 0.01 240);
+  --volt: oklch(0.88 0.15 115);
+  --plasma: oklch(0.72 0.1 205);
+  --coral: oklch(0.66 0.14 25);
 }
 
 @layer base {
