@@ -74,8 +74,7 @@
   --plasma: oklch(0.74 0.12 205);
   --coral: oklch(0.66 0.18 35);
   --khaki: oklch(0.78 0.07 90);
-  --stud-hi: oklch(1 0 0 / 0.07);
-  --stud-lo: oklch(0 0 0 / 0.22);
+  --studs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='black' fill-opacity='.10'/%3E%3Cpath d='M9 22V11a2 2 0 0 1 2-2h11' fill='none' stroke='white' stroke-opacity='.16' stroke-width='2'/%3E%3Cpath d='M23 10v11a2 2 0 0 1-2 2H10' fill='none' stroke='black' stroke-opacity='.35' stroke-width='2'/%3E%3C/svg%3E");
 }
 
 @layer base {
@@ -85,10 +84,8 @@
 
   body {
     background-color: var(--color-background);
-    background-image:
-      radial-gradient(circle at 50% 42%, var(--stud-hi) 0 5px, transparent 5.5px),
-      radial-gradient(circle at 50% 58%, var(--stud-lo) 0 6px, transparent 6.5px);
-    background-size: 28px 28px;
+    background-image: var(--studs);
+    background-size: 32px 32px;
     color: var(--color-foreground);
     font-family: var(--font-body);
   }
@@ -119,10 +116,8 @@
   border-width: 3px;
   border-color: var(--edge);
   box-shadow: 0 6px 0 0 var(--edge);
-  background-image:
-    radial-gradient(circle at 50% 42%, var(--stud-hi) 0 5px, transparent 5.5px),
-    radial-gradient(circle at 50% 58%, var(--stud-lo) 0 6px, transparent 6.5px);
-  background-size: 28px 28px;
+  background-image: var(--studs);
+    background-size: 32px 32px;
 }
 
 /* Chunky press-down button */
