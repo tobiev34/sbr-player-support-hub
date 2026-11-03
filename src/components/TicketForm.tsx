@@ -25,7 +25,7 @@ const accentBtn: Record<Accent, string> = {
 };
 
 const inputCls =
-  "w-full rounded-xl border border-edge bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-dim/70 outline-none transition-colors focus:border-volt/60";
+  "w-full rounded-xl border-[3px] border-edge bg-background px-4 py-3 text-sm text-foreground placeholder:text-dim/70 outline-none transition-colors focus:border-volt/60";
 
 export function PageIntro({
   eyebrow,
@@ -74,7 +74,7 @@ export function TicketForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-2xl border border-edge bg-panel/70 p-6 backdrop-blur-md md:p-8"
+      className="rounded-2xl border border-edge bg-panel p-6 brick md:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         {fields.map((f) => (
@@ -126,7 +126,7 @@ export function TicketForm({
         </span>
         <button
           type="submit"
-          className={`rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 ${accentBtn[accent]}`}
+          className={`brick-btn rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 ${accentBtn[accent]}`}
         >
           {submitLabel}
         </button>

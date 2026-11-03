@@ -22,7 +22,7 @@ function UpdatesPage() {
       </PageIntro>
       <div className="mt-10 grid gap-4">
         {updates.map((u) => (
-          <article key={u.version} className="rounded-2xl border border-edge bg-panel/70 p-6 backdrop-blur-md">
+          <article key={u.version} className="rounded-2xl border border-edge bg-panel p-6 brick">
             <div className="font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
               <span className="text-volt">{u.version}</span> · {u.date}
             </div>
