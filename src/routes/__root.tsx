@@ -104,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
       },
     ],
   }),
@@ -132,7 +132,7 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-edge/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6 py-4">
-        <nav className="hidden items-center gap-7 font-mono text-[11px] uppercase tracking-[0.2em] text-dim md:flex">
+        <nav className="hidden items-center gap-7 font-mono text-[11px] uppercase tracking-[0.08em] text-dim md:flex">
           <Link to="/" className="transition-colors hover:text-volt" activeProps={{ className: "text-foreground" }}>
             Home
           </Link>
@@ -174,10 +174,10 @@ function SiteFooter() {
   return (
     <footer className="border-t border-edge/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
-        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
+        <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-dim">
           © 2026 SBR Studio · all matches logged
         </span>
-        <div className="flex gap-6 font-mono text-[11px] uppercase tracking-[0.15em] text-dim">
+        <div className="flex gap-6 font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
           <Link to="/appeal" className="transition-colors hover:text-volt">
             Appeal
           </Link>
