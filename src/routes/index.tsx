@@ -82,7 +82,7 @@ function Index() {
         <div className="grid gap-4 lg:grid-cols-3">
           <article className="overflow-hidden rounded-2xl border border-edge bg-panel brick lg:col-span-2">
             <div className="grid sm:grid-cols-2">
-              <img src={sbrBanner.url} alt="SBR Studios logo" width={960} height={540} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
+              <img src={main.image ?? sbrBanner.url} alt={main.image ? main.title : "SBR Studios logo"} width={960} height={540} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
               <div className="p-6">
                 <div className="flex gap-3 font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
                   <span className="text-volt">{main.version}</span>

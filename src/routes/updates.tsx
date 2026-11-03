@@ -23,6 +23,9 @@ function UpdatesPage() {
       <div className="mt-10 grid gap-4">
         {updates.map((u) => (
           <article key={u.version} className="rounded-2xl border border-edge bg-panel p-6 brick">
+            {u.image && (
+              <img src={u.image} alt={u.title} width={1024} height={576} className="mb-5 w-full rounded-lg border-[3px] border-edge" />
+            )}
             <div className="font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
               <span className="text-volt">{u.version}</span> · {u.date}
             </div>
