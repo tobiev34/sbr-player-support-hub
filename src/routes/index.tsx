@@ -80,7 +80,7 @@ function Index() {
           <Link to="/updates" className="font-mono text-[11px] uppercase tracking-[0.06em] text-dim hover:text-volt">All notes →</Link>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
-          <article className="overflow-hidden rounded-2xl border border-edge bg-panel brick lg:col-span-2">
+          <article className="overflow-hidden rounded-2xl border border-edge bg-panel brick lg:col-span-3">
             <div className="grid sm:grid-cols-2">
               <img src={main.image ?? sbrBanner.url} alt={main.image ? main.title : "SBR Studios logo"} width={960} height={540} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
               <div className="p-6">
