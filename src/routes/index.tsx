@@ -28,7 +28,7 @@ function Index() {
     <main className="relative mx-auto max-w-6xl px-6 pb-28">
       <section className="grid items-center gap-8 pt-16 md:grid-cols-2 md:pt-24">
         <div className="animate-rise">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-edge bg-panel/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-volt">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-edge bg-panel px-3 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-volt">
             <span className="size-1.5 rounded-full bg-volt" />
             Season 4 · live now
           </div>
@@ -42,10 +42,10 @@ function Index() {
             answered, and every ban appeal gets a human.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#actions" className="rounded-xl bg-volt px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:brightness-110">
-              Open the console
+            <a href="#actions" className="rounded-xl bg-volt brick-btn px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:brightness-110">
+              Deploy to HQ
             </a>
-            <Link to="/updates" className="rounded-xl border border-edge bg-panel px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-plasma/60">
+            <Link to="/updates" className="rounded-xl bg-panel brick-btn px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-plasma/60">
               Patch notes
             </Link>
           </div>
@@ -65,7 +65,7 @@ function Index() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {actions.map((a) => (
-            <Link key={a.to} to={a.to} className={`group rounded-2xl border border-edge bg-panel/70 p-6 backdrop-blur-md transition-colors ${a.hover}`}>
+            <Link key={a.to} to={a.to} className={`group rounded-2xl border border-edge bg-panel p-6 brick transition-colors ${a.hover}`}>
               <div className={`mb-6 grid size-11 place-items-center rounded-xl font-mono text-lg font-bold ${a.bg} ${a.text}`}>{a.n}</div>
               <h3 className="font-display text-lg font-bold tracking-tight">{a.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-dim">{a.body}</p>
@@ -81,7 +81,7 @@ function Index() {
           <Link to="/updates" className="font-mono text-[11px] uppercase tracking-[0.06em] text-dim hover:text-volt">All notes →</Link>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
-          <article className="overflow-hidden rounded-2xl border border-edge bg-panel/70 backdrop-blur-md lg:col-span-2">
+          <article className="overflow-hidden rounded-2xl border border-edge bg-panel brick lg:col-span-2">
             <div className="grid sm:grid-cols-2">
               <img src={ashfallMap} alt="Ashfall map" width={912} height={736} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
               <div className="p-6">
@@ -96,7 +96,7 @@ function Index() {
           </article>
           <div className="grid gap-4">
             {rest.slice(0, 2).map((u) => (
-              <article key={u.version} className="rounded-2xl border border-edge bg-panel/70 p-5 backdrop-blur-md">
+              <article key={u.version} className="rounded-2xl border border-edge bg-panel p-5 brick">
                 <div className="font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
                   <span className="text-volt">{u.version}</span> · {u.date}
                 </div>
@@ -108,7 +108,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mt-20 rounded-3xl border border-edge bg-panel/50 p-8 backdrop-blur-md md:p-12">
+      <section className="mt-20 rounded-3xl border border-edge bg-panel p-8 brick md:p-12">
         <div className="mb-8 flex items-end justify-between">
           <div>
             <div className="font-mono text-[11px] uppercase tracking-[0.08em] text-volt">(c) Credits</div>

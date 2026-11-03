@@ -29,7 +29,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-xl bg-volt px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+            className="inline-flex items-center justify-center rounded-xl bg-volt brick-btn px-5 py-2.5 text-sm font-semibold text-primary-foreground"
           >
             Go home
           </Link>
@@ -61,13 +61,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-xl bg-volt px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+            className="inline-flex items-center justify-center rounded-xl bg-volt brick-btn px-5 py-2.5 text-sm font-semibold text-primary-foreground"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-xl border border-edge bg-panel px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-volt/60"
+            className="inline-flex items-center justify-center rounded-xl bg-panel brick-btn px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-volt/60"
           >
             Go home
           </a>
@@ -104,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Russo+One&family=Source+Sans+3:wght@400;600;700&display=swap",
       },
     ],
   }),
@@ -130,7 +130,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-edge/60 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b-[3px] border-edge bg-panel">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6 py-4">
         <nav className="hidden items-center gap-7 font-mono text-[11px] uppercase tracking-[0.08em] text-dim md:flex">
           <Link to="/" className="transition-colors hover:text-volt" activeProps={{ className: "text-foreground" }}>
@@ -161,7 +161,7 @@ function SiteHeader() {
 
         <Link
           to="/appeal"
-          className="justify-self-end rounded-lg border border-edge bg-panel px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-volt/60 hover:text-volt"
+          className="justify-self-end rounded-lg bg-panel brick-btn px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-volt/60 hover:text-volt"
         >
           Appeal a ban
         </Link>
@@ -172,7 +172,7 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-edge/60 bg-background/70 backdrop-blur-xl">
+    <footer className="border-t-[3px] border-edge bg-panel">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
         <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-dim">
           © 2026 SBR Studio · all matches logged

@@ -41,38 +41,41 @@
 }
 
 @theme {
-  --font-display: "Sora", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "Inter", sans-serif;
+  --font-display: "Russo One", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
+  --font-mono: "Source Sans 3", sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.16 0.006 240);
-  --foreground: oklch(0.95 0.004 240);
-  --card: oklch(0.2 0.007 240);
-  --card-foreground: oklch(0.95 0.004 240);
-  --popover: oklch(0.2 0.007 240);
-  --popover-foreground: oklch(0.95 0.004 240);
-  --primary: oklch(0.88 0.15 115);
-  --primary-foreground: oklch(0.18 0.01 240);
-  --secondary: oklch(0.24 0.008 240);
-  --secondary-foreground: oklch(0.95 0.004 240);
-  --muted: oklch(0.24 0.008 240);
-  --muted-foreground: oklch(0.7 0.01 240);
-  --accent: oklch(0.72 0.1 205);
-  --accent-foreground: oklch(0.18 0.01 240);
-  --destructive: oklch(0.62 0.17 25);
-  --destructive-foreground: oklch(0.97 0.004 240);
-  --border: oklch(0.3 0.008 240);
-  --input: oklch(0.3 0.008 240);
-  --ring: oklch(0.88 0.15 115);
-  --panel: oklch(0.2 0.007 240);
-  --edge: oklch(0.3 0.008 240);
-  --dim: oklch(0.7 0.01 240);
-  --volt: oklch(0.88 0.15 115);
-  --plasma: oklch(0.72 0.1 205);
-  --coral: oklch(0.66 0.14 25);
+  --radius: 0.25rem;
+  --background: oklch(0.24 0.03 125);
+  --foreground: oklch(0.96 0.02 100);
+  --card: oklch(0.3 0.04 125);
+  --card-foreground: oklch(0.96 0.02 100);
+  --popover: oklch(0.3 0.04 125);
+  --popover-foreground: oklch(0.96 0.02 100);
+  --primary: oklch(0.9 0.18 115);
+  --primary-foreground: oklch(0.2 0.03 125);
+  --secondary: oklch(0.34 0.04 125);
+  --secondary-foreground: oklch(0.96 0.02 100);
+  --muted: oklch(0.34 0.04 125);
+  --muted-foreground: oklch(0.8 0.04 95);
+  --accent: oklch(0.74 0.12 205);
+  --accent-foreground: oklch(0.2 0.03 125);
+  --destructive: oklch(0.62 0.19 30);
+  --destructive-foreground: oklch(0.97 0.01 100);
+  --border: oklch(0.18 0.03 125);
+  --input: oklch(0.18 0.03 125);
+  --ring: oklch(0.9 0.18 115);
+  --panel: oklch(0.3 0.04 125);
+  --edge: oklch(0.18 0.03 125);
+  --dim: oklch(0.8 0.04 95);
+  --volt: oklch(0.9 0.18 115);
+  --plasma: oklch(0.74 0.12 205);
+  --coral: oklch(0.66 0.18 35);
+  --khaki: oklch(0.78 0.07 90);
+  --stud-hi: oklch(1 0 0 / 0.07);
+  --stud-lo: oklch(0 0 0 / 0.22);
 }
 
 @layer base {
@@ -82,8 +85,17 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(circle at 50% 42%, var(--stud-hi) 0 5px, transparent 5.5px),
+      radial-gradient(circle at 50% 58%, var(--stud-lo) 0 6px, transparent 6.5px);
+    background-size: 28px 28px;
     color: var(--color-foreground);
     font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -100,4 +112,29 @@
 
 @utility animate-rise {
   animation: rise 0.6s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+/* Plastic brick block: thick dark outline + hard bottom ledge */
+@utility brick {
+  border-width: 3px;
+  border-color: var(--edge);
+  box-shadow: 0 6px 0 0 var(--edge);
+  background-image:
+    radial-gradient(circle at 50% 42%, var(--stud-hi) 0 5px, transparent 5.5px),
+    radial-gradient(circle at 50% 58%, var(--stud-lo) 0 6px, transparent 6.5px);
+  background-size: 28px 28px;
+}
+
+/* Chunky press-down button */
+@utility brick-btn {
+  border: 3px solid var(--edge);
+  box-shadow: 0 4px 0 0 var(--edge);
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  transition: transform 80ms, box-shadow 80ms;
+  &:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 var(--edge);
+  }
 }
