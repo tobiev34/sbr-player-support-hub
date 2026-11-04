@@ -15,6 +15,7 @@ import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as UpdatesRouteImport } from './routes/updates'
+import { Route as ApiPublicDiscordInteractionsRouteImport } from './routes/api/public/discord-interactions'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,12 @@ const UpdatesRoute = UpdatesRouteImport.update({
   path: '/updates',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicDiscordInteractionsRoute =
+  ApiPublicDiscordInteractionsRouteImport.update({
+    id: '/api/public/discord-interactions',
+    path: '/api/public/discord-interactions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByFullPath {
   '/report': typeof ReportRoute
   '/support': typeof SupportRoute
   '/updates': typeof UpdatesRoute
+  '/api/public/discord-interactions': typeof ApiPublicDiscordInteractionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +70,7 @@ export interface FileRoutesByTo {
   '/report': typeof ReportRoute
   '/support': typeof SupportRoute
   '/updates': typeof UpdatesRoute
+  '/api/public/discord-interactions': typeof ApiPublicDiscordInteractionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +80,27 @@ export interface FileRoutesById {
   '/report': typeof ReportRoute
   '/support': typeof SupportRoute
   '/updates': typeof UpdatesRoute
+  '/api/public/discord-interactions': typeof ApiPublicDiscordInteractionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/appeal' | '/credits' | '/report' | '/support' | '/updates'
+  fullPaths:
+    | '/'
+    | '/appeal'
+    | '/credits'
+    | '/report'
+    | '/support'
+    | '/updates'
+    | '/api/public/discord-interactions'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/appeal' | '/credits' | '/report' | '/support' | '/updates'
+  to:
+    | '/'
+    | '/appeal'
+    | '/credits'
+    | '/report'
+    | '/support'
+    | '/updates'
+    | '/api/public/discord-interactions'
   id:
     | '__root__'
     | '/'
@@ -85,6 +109,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/support'
     | '/updates'
+    | '/api/public/discord-interactions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +119,7 @@ export interface RootRouteChildren {
   ReportRoute: typeof ReportRoute
   SupportRoute: typeof SupportRoute
   UpdatesRoute: typeof UpdatesRoute
+  ApiPublicDiscordInteractionsRoute: typeof ApiPublicDiscordInteractionsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -140,6 +166,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UpdatesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/discord-interactions': {
+      id: '/api/public/discord-interactions'
+      path: '/api/public/discord-interactions'
+      fullPath: '/api/public/discord-interactions'
+      preLoaderRoute: typeof ApiPublicDiscordInteractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -150,6 +183,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReportRoute: ReportRoute,
   SupportRoute: SupportRoute,
   UpdatesRoute: UpdatesRoute,
+  ApiPublicDiscordInteractionsRoute: ApiPublicDiscordInteractionsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
