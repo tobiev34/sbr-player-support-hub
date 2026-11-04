@@ -5,10 +5,10 @@ export const team = [
   { name: "NEXI", role: "OWNER" },
   { name: "MYSOUL", role: "COMUNITY LEADER" },
   { name: "ALBERT", role: "DC LEADER" },
-  { name: "....", role: "Community Manager" },
-  { name: "....", role: "Concept Artist" },
-  { name: "....", role: "Gameplay Programmer" },
-  { name: "....", role: "Sound Designer" },
+  { name: "Null", role: "STAFF MANAGER" },
+  { name: "....", role: "" },
+  { name: "....", role: "" },
+  { name: "....", role: "" },
 ];
 
 export type Update = { version: string; date: string; title: string; body: string; image?: string };
