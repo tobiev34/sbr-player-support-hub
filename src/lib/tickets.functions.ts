@@ -33,7 +33,7 @@ export const sendTicket = createServerFn({ method: "POST" })
       }),
     });
     if (!res.ok) {
-      console.error("Discord webhook failed", res.status);
+      console.error("Discord webhook failed", res.status, await res.text());
       return { ok: false, error: "Could not send" };
     }
     return { ok: true };
