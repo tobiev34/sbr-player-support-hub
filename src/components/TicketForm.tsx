@@ -1,5 +1,7 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { sendTicket } from "@/lib/tickets.functions";
 
 export type Field = {
   name: string;
@@ -63,12 +65,31 @@ export function TicketForm({
   accent?: Accent;
 }) {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const send = useServerFn(sendTicket);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    toast.success(successMessage);
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const kind = accent === "coral" ? "Report" : accent === "plasma" ? "Support" : "Ban appeal";
+    setBusy(true);
+    try {
+      const res = await send({
+        data: {
+          kind,
+          fields: fields.map((f) => ({ label: f.label, value: String(fd.get(f.name) ?? "") })),
+        },
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+      toast.success(successMessage);
+      form.reset();
+    } catch {
+      toast.error("Could not send right now. Please try again later.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
