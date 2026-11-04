@@ -19,6 +19,7 @@ export const sendTicket = createServerFn({ method: "POST" })
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        thread_name: `${data.kind}: ${(data.fields.find((f) => f.value.trim())?.value ?? "new").slice(0, 60)}`,
         allowed_mentions: { parse: [] },
         embeds: [
           {
@@ -33,7 +34,7 @@ export const sendTicket = createServerFn({ method: "POST" })
       }),
     });
     if (!res.ok) {
-      console.error("Discord webhook failed", res.status);
+      console.error("Discord webhook failed", res.status, await res.text());
       return { ok: false, error: "Could not send" };
     }
     return { ok: true };
