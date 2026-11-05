@@ -72,8 +72,9 @@ export const sendTicket = createServerFn({ method: "POST" })
       .filter(({ f }) => f.type.startsWith("image/"))
       .slice(0, 4);
     const galleryUrl = "https://sbr-player-support-hub.lovable.app";
-    if (images.length) {
-      Object.assign(embed, { url: galleryUrl, image: { url: `attachment://${images[0].name}` } });
+    const firstImage = images[0];
+    if (firstImage) {
+      Object.assign(embed, { url: galleryUrl, image: { url: `attachment://${firstImage.name}` } });
     }
     const extraEmbeds = images.slice(1).map(({ name }) => ({ url: galleryUrl, image: { url: `attachment://${name}` } }));
     const allEmbeds = [embed, ...extraEmbeds];
