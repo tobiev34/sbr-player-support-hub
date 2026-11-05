@@ -44,7 +44,7 @@ function parseInput(d: unknown) {
 function multipart(payload: object, files: File[]) {
   const body = new FormData();
   body.append("payload_json", JSON.stringify(payload));
-  files.forEach((f, i) => body.append(`files[${i}]`, f, f.name || `proof-${i}`));
+  files.forEach((f, i) => body.append(`files[${i}]`, f, (f.name || `proof-${i}`).replace(/[^\w.-]/g, "_")));
   return body;
 }
 
@@ -65,6 +65,18 @@ export const sendTicket = createServerFn({ method: "POST" })
         { name: "Status", value: "⏳ Waiting for staff", inline: false },
       ],
     };
+    // Show photos inside the card itself (Discord groups up to 4 embeds sharing a url into a gallery).
+    const fileName = (f: File, i: number) => (f.name || `proof-${i}`).replace(/[^\w.-]/g, "_");
+    const images = data.files
+      .map((f, i) => ({ f, name: fileName(f, i) }))
+      .filter(({ f }) => f.type.startsWith("image/"))
+      .slice(0, 4);
+    const galleryUrl = "https://sbr-player-support-hub.lovable.app";
+    if (images.length) {
+      Object.assign(embed, { url: galleryUrl, image: { url: `attachment://${images[0].name}` } });
+    }
+    const extraEmbeds = images.slice(1).map(({ name }) => ({ url: galleryUrl, image: { url: `attachment://${name}` } }));
+    const allEmbeds = [embed, ...extraEmbeds];
     const firstValue = (data.fields.find((f) => f.value.trim())?.value ?? "new").slice(0, 60);
     const threadName = `${data.kind}: ${firstValue}`;
 
@@ -80,7 +92,7 @@ export const sendTicket = createServerFn({ method: "POST" })
       }
       const channel = (await chRes.json()) as { type: number };
       const isForum = channel.type === 15 || channel.type === 16;
-      const message = { allowed_mentions: { parse: [] }, embeds: [embed], components: decisionButtons };
+      const message = { allowed_mentions: { parse: [] }, embeds: allEmbeds, components: decisionButtons };
       const res = isForum
         ? await fetch(`https://discord.com/api/v10/channels/${channelId}/threads`, {
             method: "POST",
@@ -102,7 +114,7 @@ export const sendTicket = createServerFn({ method: "POST" })
     // Fallback: plain webhook (no buttons).
     const url = process.env["DISCORD_WEBHOOK_URL"];
     if (!url) return { ok: false, error: "Not configured yet" };
-    const payload = { allowed_mentions: { parse: [] }, embeds: [embed] };
+    const payload = { allowed_mentions: { parse: [] }, embeds: allEmbeds };
     const post = (p: object) => fetch(url, { method: "POST", body: multipart(p, data.files) });
     let res = await post(payload);
     if (res.status === 400) {
