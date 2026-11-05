@@ -86,13 +86,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "SBR Studio — appeal a ban, contact support, report a member or staff, and read the latest game updates.",
+          "SBR Studio — appeal a ban, contact support, report hackers, and read the latest game updates.",
       },
       { property: "og:title", content: "SBR Studio" },
       {
         property: "og:description",
         content:
-          "SBR Studio — appeal a ban, contact support, report a member or staff, and read the latest game updates.",
+          "SBR Studio — appeal a ban, contact support, report hackers, and read the latest game updates.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
