@@ -81,7 +81,8 @@ export function TicketForm({
 
   function removeFile(i: number) {
     setFiles((prev) => {
-      URL.revokeObjectURL(prev[i].url);
+      const p = prev[i];
+      if (p) URL.revokeObjectURL(p.url);
       return prev.filter((_, j) => j !== i);
     });
   }
