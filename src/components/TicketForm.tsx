@@ -67,15 +67,32 @@ export function TicketForm({
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const send = useServerFn(sendTicket);
+  const [files, setFiles] = useState<{ file: File; url: string }[]>([]);
+  const [drag, setDrag] = useState(false);
+  const totalSize = files.reduce((s, p) => s + p.file.size, 0);
+  const tooBig = files.length > 5 || totalSize > 10 * 1024 * 1024;
+
+  function addFiles(list: FileList) {
+    const picked = Array.from(list).filter(
+      (f) => f.type.startsWith("image/") || f.type.startsWith("video/"),
+    );
+    setFiles((prev) => [...prev, ...picked.map((file) => ({ file, url: URL.createObjectURL(file) }))]);
+  }
+
+  function removeFile(i: number) {
+    setFiles((prev) => {
+      URL.revokeObjectURL(prev[i].url);
+      return prev.filter((_, j) => j !== i);
+    });
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
     const kind = accent === "coral" ? "Report" : accent === "plasma" ? "Support" : "Ban appeal";
-    const proof = (fd.getAll("proof") as File[]).filter((f) => f.size > 0);
-    const total = proof.reduce((s, f) => s + f.size, 0);
-    if (proof.length > 5 || total > 10 * 1024 * 1024) {
+    const proof = files.map((p) => p.file);
+    if (tooBig) {
       toast.error("Proof is too big: max 5 files and 10 MB in total.");
       return;
     }
@@ -93,6 +110,8 @@ export function TicketForm({
       setSent(true);
       toast.success(successMessage);
       form.reset();
+      files.forEach((p) => URL.revokeObjectURL(p.url));
+      setFiles([]);
     } catch {
       toast.error("Could not send right now. Please try again later.");
     } finally {
@@ -148,19 +167,69 @@ export function TicketForm({
             )}
           </label>
         ))}
-        <label className="block sm:col-span-2">
+        <div className="sm:col-span-2">
           <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
             Proof (pictures or videos)
           </span>
-          <input
-            name="proof"
-            type="file"
-            multiple
-            accept="image/*,video/*"
-            className={`${inputCls} file:mr-4 file:rounded-lg file:border-0 file:bg-panel file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-foreground`}
-          />
-          <span className="mt-1 block text-xs text-dim">Optional · up to 5 files, 10 MB total</span>
-        </label>
+          <label
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDrag(true);
+            }}
+            onDragLeave={() => setDrag(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDrag(false);
+              addFiles(e.dataTransfer.files);
+            }}
+            className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-[3px] border-dashed px-4 py-8 text-center transition-colors ${drag ? "border-foreground bg-panel" : "border-edge bg-background hover:border-dim"}`}
+          >
+            <span className="font-display text-lg uppercase">Drop photos or videos here</span>
+            <span className="text-sm text-dim">or click to choose · up to 5 files, 10 MB total</span>
+            <input
+              type="file"
+              multiple
+              accept="image/*,video/*"
+              className="sr-only"
+              onChange={(e) => {
+                if (e.target.files) addFiles(e.target.files);
+                e.target.value = "";
+              }}
+            />
+          </label>
+          {files.length > 0 && (
+            <>
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+                {files.map((p, i) => (
+                  <div
+                    key={p.url}
+                    className="relative overflow-hidden rounded-xl border-[3px] border-edge bg-background"
+                  >
+                    {p.file.type.startsWith("video/") ? (
+                      <video src={p.url} className="aspect-square w-full object-cover" muted />
+                    ) : (
+                      <img src={p.url} alt={p.file.name} className="aspect-square w-full object-cover" />
+                    )}
+                    <button
+                      type="button"
+                      aria-label={`Remove ${p.file.name}`}
+                      onClick={() => removeFile(i)}
+                      className="absolute right-1.5 top-1.5 flex size-7 items-center justify-center rounded-lg border-2 border-edge bg-panel text-sm font-bold text-foreground"
+                    >
+                      ✕
+                    </button>
+                    <div className="truncate px-2 py-1 text-[11px] text-dim">
+                      {p.file.name} · {(p.file.size / 1024 / 1024).toFixed(1)} MB
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className={`mt-2 text-xs ${tooBig ? "text-destructive" : "text-dim"}`}>
+                {files.length}/5 files · {(totalSize / 1024 / 1024).toFixed(1)} / 10 MB
+              </div>
+            </>
+          )}
+        </div>
       </div>
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <span className="font-mono text-[11px] text-dim">
