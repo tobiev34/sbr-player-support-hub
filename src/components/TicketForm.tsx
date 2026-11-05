@@ -73,14 +73,22 @@ export function TicketForm({
     const form = e.currentTarget;
     const fd = new FormData(form);
     const kind = accent === "coral" ? "Report" : accent === "plasma" ? "Support" : "Ban appeal";
+    const proof = (fd.getAll("proof") as File[]).filter((f) => f.size > 0);
+    const total = proof.reduce((s, f) => s + f.size, 0);
+    if (proof.length > 5 || total > 10 * 1024 * 1024) {
+      toast.error("Proof is too big: max 5 files and 10 MB in total.");
+      return;
+    }
+    const body = new FormData();
+    body.append("kind", kind);
+    body.append(
+      "fields",
+      JSON.stringify(fields.map((f) => ({ label: f.label, value: String(fd.get(f.name) ?? "") }))),
+    );
+    proof.forEach((f) => body.append("proof", f));
     setBusy(true);
     try {
-      const res = await send({
-        data: {
-          kind,
-          fields: fields.map((f) => ({ label: f.label, value: String(fd.get(f.name) ?? "") })),
-        },
-      });
+      const res = await send({ data: body });
       if (!res.ok) throw new Error();
       setSent(true);
       toast.success(successMessage);
@@ -140,6 +148,19 @@ export function TicketForm({
             )}
           </label>
         ))}
+        <label className="block sm:col-span-2">
+          <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
+            Proof (pictures or videos)
+          </span>
+          <input
+            name="proof"
+            type="file"
+            multiple
+            accept="image/*,video/*"
+            className={`${inputCls} file:mr-4 file:rounded-lg file:border-0 file:bg-panel file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-foreground`}
+          />
+          <span className="mt-1 block text-xs text-dim">Optional · up to 5 files, 10 MB total</span>
+        </label>
       </div>
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <span className="font-mono text-[11px] text-dim">
@@ -147,6 +168,7 @@ export function TicketForm({
         </span>
         <button
           type="submit"
+          disabled={busy}
           className={`brick-btn rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 ${accentBtn[accent]}`}
         >
           {submitLabel}
