@@ -25,7 +25,7 @@ function SupportPage() {
         successMessage="Ticket sent — support will reply soon."
         fields={[
           { name: "username", label: "Username", placeholder: "Your in-game name" },
-          { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+          { name: "email", label: "Email (optional)", type: "email", placeholder: "you@example.com", required: false },
           {
             name: "topic",
             label: "Topic",
