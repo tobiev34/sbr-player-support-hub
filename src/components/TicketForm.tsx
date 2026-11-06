@@ -10,6 +10,9 @@ export type Field = {
   placeholder?: string;
   options?: string[];
   required?: boolean;
+  /** For select fields: show a second dropdown when this value is chosen. */
+  subOptions?: Record<string, string[]>;
+  subLabel?: string;
 };
 
 type Accent = "volt" | "plasma" | "coral";
@@ -69,6 +72,7 @@ export function TicketForm({
   const send = useServerFn(sendTicket);
   const [files, setFiles] = useState<{ file: File; url: string }[]>([]);
   const [drag, setDrag] = useState(false);
+  const [selectValues, setSelectValues] = useState<Record<string, string>>({});
   const totalSize = files.reduce((s, p) => s + p.file.size, 0);
   const tooBig = files.length > 5 || totalSize > 10 * 1024 * 1024;
 
