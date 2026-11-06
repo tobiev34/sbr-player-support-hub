@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
 
 const actions = [
   { to: "/appeal", n: "01", title: "Ban Appeal", body: "Think a suspension was wrong? File a case and a moderator reviews the match replay.", cta: "Open a case →", text: "text-volt", bg: "bg-volt/10", hover: "hover:border-volt/50" },
-  { to: "/support", n: "02", title: "Contact Support", body: "Billing, account recovery, or a bug that won't quit — reach a real SBR agent.", cta: "Start a ticket →", text: "text-plasma", bg: "bg-plasma/10", hover: "hover:border-plasma/50" },
+  { to: "/support", n: "02", title: "Appeal Roles", body: "Want to join the SBR team? Appeal for content creator, tester, mod, staff, or dev.", cta: "Appeal now →", text: "text-plasma", bg: "bg-plasma/10", hover: "hover:border-plasma/50" },
   { to: "/report", n: "03", title: "Hacker Report", body: "Caught someone hacking? Name them and attach the match ID for a confidential review.", cta: "File a report →", text: "text-coral", bg: "bg-coral/10", hover: "hover:border-coral/50" },
 ] as const;
 
