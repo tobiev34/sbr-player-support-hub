@@ -26,7 +26,16 @@ function SupportPage() {
         fields={[
           { name: "username", label: "Username", placeholder: "Your in-game name" },
           { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-          { name: "topic", label: "Topic", type: "select", options: ["Account", "Billing", "Bug", "Other"] },
+          {
+            name: "topic",
+            label: "Topic",
+            type: "select",
+            options: ["Content creator", "Tester", "Lead tester", "In-game mod", "DC staff", "In-game dev"],
+            subOptions: {
+              "In-game dev": ["Scripter", "VFX artist", "Modeller", "Builder", "UI designer"],
+            },
+            subLabel: "Dev role",
+          },
           { name: "subject", label: "Subject", placeholder: "Short summary" },
           { name: "message", label: "Message", type: "textarea", placeholder: "How can we help?" },
         ]}
