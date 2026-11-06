@@ -137,7 +137,7 @@ function SiteHeader() {
             Home
           </Link>
           <Link to="/support" className="transition-colors hover:text-volt" activeProps={{ className: "text-foreground" }}>
-            Support
+            Appeal roles
           </Link>
           <Link to="/updates" className="transition-colors hover:text-volt" activeProps={{ className: "text-foreground" }}>
             Updates
@@ -182,7 +182,7 @@ function SiteFooter() {
             Appeal
           </Link>
           <Link to="/support" className="transition-colors hover:text-volt">
-            Support
+            Appeal roles
           </Link>
           <Link to="/report" className="transition-colors hover:text-volt">
             Report
