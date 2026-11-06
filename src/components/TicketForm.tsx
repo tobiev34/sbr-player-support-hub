@@ -103,10 +103,14 @@ export function TicketForm({
     }
     const body = new FormData();
     body.append("kind", kind);
-    body.append(
-      "fields",
-      JSON.stringify(fields.map((f) => ({ label: f.label, value: String(fd.get(f.name) ?? "") }))),
-    );
+    const entries = fields.map((f) => ({ label: f.label, value: String(fd.get(f.name) ?? "") }));
+    fields.forEach((f) => {
+      if (f.subOptions) {
+        const v = fd.get(`${f.name}-sub`);
+        if (v) entries.push({ label: f.subLabel ?? `${f.label} role`, value: String(v) });
+      }
+    });
+    body.append("fields", JSON.stringify(entries));
     proof.forEach((f) => body.append("proof", f));
     setBusy(true);
     try {
@@ -148,19 +152,39 @@ export function TicketForm({
                 className={inputCls}
               />
             ) : f.type === "select" ? (
-              <select
-                name={f.name}
-                required={f.required !== false}
-                defaultValue=""
-                className={inputCls}
-              >
-                <option value="" disabled>
-                  Choose…
-                </option>
-                {f.options?.map((o) => (
-                  <option key={o}>{o}</option>
-                ))}
-              </select>
+              <>
+                <select
+                  name={f.name}
+                  required={f.required !== false}
+                  defaultValue=""
+                  className={inputCls}
+                  onChange={(e) =>
+                    setSelectValues((prev) => ({ ...prev, [f.name]: e.target.value }))
+                  }
+                >
+                  <option value="" disabled>
+                    Choose…
+                  </option>
+                  {f.options?.map((o) => (
+                    <option key={o}>{o}</option>
+                  ))}
+                </select>
+                {f.subOptions?.[selectValues[f.name] ?? ""] && (
+                  <>
+                    <span className="mb-2 mt-4 block font-mono text-[11px] uppercase tracking-[0.06em] text-dim">
+                      {f.subLabel ?? `${f.label} role`} <span className={accentText[accent]}>*</span>
+                    </span>
+                    <select name={`${f.name}-sub`} required defaultValue="" className={inputCls}>
+                      <option value="" disabled>
+                        Choose…
+                      </option>
+                      {f.subOptions[selectValues[f.name] ?? ""]?.map((o) => (
+                        <option key={o}>{o}</option>
+                      ))}
+                    </select>
+                  </>
+                )}
+              </>
             ) : (
               <input
                 name={f.name}
